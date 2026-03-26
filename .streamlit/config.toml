@@ -1,0 +1,22 @@
+# .streamlit/config.toml
+# Dashboard P&L Multi-sites — Configuration Streamlit Cloud
+
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = true
+maxUploadSize = 50
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base                     = "light"
+primaryColor             = "#1a5f8a"
+backgroundColor          = "#f0f4f8"
+secondaryBackgroundColor = "#ffffff"
+textColor                = "#0d2b45"
+font                     = "sans serif"
+
+[runner]
+fastReruns = true

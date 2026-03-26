@@ -1,0 +1,43 @@
+# ── DONNÉES RÉELLES — NE JAMAIS POUSSER ──────────────────────────────────────
+dashboard_multisite_nettoye.xlsx
+comptes_anonymises.xlsx
+anonymize_comptes.py
+*_nettoye.xlsx
+*_reel.xlsx
+*_brut.xlsx
+
+# Exclure tous les xlsx sauf les données de démo
+*.xlsx
+!data/sample_data.xlsx
+!data/sample_balance.xlsx
+!data/sample_monthly.xlsx
+
+# ── ENVIRONNEMENT PYTHON ──────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ── JUPYTER ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── STREAMLIT ─────────────────────────────────────────────────────────────────
+.streamlit/secrets.toml
+
+# ── SYSTÈME ───────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
