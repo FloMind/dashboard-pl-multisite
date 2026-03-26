@@ -150,14 +150,14 @@ Le fichier Excel d'entrée doit contenir une feuille avec les colonnes suivantes
 | `Compte` | Numéro de compte PCG | `607000` |
 | `Libellé Compte` | Intitulé du compte | `ACHATS MARCHANDISES` |
 | `Libellé Centre de Coûts` | Nom du site | `Site_01` |
-| `MENSUEL R 25` | Réalisé mensuel 2024 | `-45 230` |
-| `MENSUEL B 25` | Budget mensuel 2024 | `-48 000` |
-| `MENSUEL R 25` | Réalisé mensuel 2023 | `-42 100` |
-| `CUMUL R 25` | Cumul réalisé 2024 | `-542 760` |
-| `CUMUL B 25` | Cumul budget 2024 | `-576 000` |
-| `CUMUL R 25` | Cumul réalisé 2023 | `-505 200` |
-| `BUDGET ANNUEL B 25` | Budget annuel 2024 | `-576 000` |
-| `REALISE ANNUEL R 24` | Réalisé annuel 2023 | `-505 200` |
+| `MENSUEL R 25` | Réalisé mensuel 2025 | `-45 230` |
+| `MENSUEL B 25` | Budget mensuel 2025 | `-48 000` |
+| `MENSUEL R 24` | Réalisé mensuel 2024 | `-42 100` |
+| `CUMUL R 25` | Cumul réalisé 2025 | `-542 760` |
+| `CUMUL B 25` | Cumul budget 2025 | `-576 000` |
+| `CUMUL R 24` | Cumul réalisé 2024 | `-505 200` |
+| `BUDGET ANNUEL B 25` | Budget annuel 2025 | `-576 000` |
+| `REALISE ANNUEL R 24` | Réalisé annuel 2024 | `-505 200` |
 
 > **Convention de signe** : produits (70x) positifs, charges (6x) négatives — conforme à l'export Sage standard.
 
