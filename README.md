@@ -216,9 +216,9 @@ dashboard-pl-multisite/
 
 ## Auteur
 
-**Florent Cochet** — Contrôleur de gestion & Data  
+**Florent Cochet** - Contrôleur de gestion & Data  
 13 ans de pilotage de réseaux de distribution multi-sites (négoce B2B)  
-Certification Data Scientist — Mines Paris PSL (2025)
+Certification Data Scientist - Mines Paris PSL (2025)
 
 [LinkedIn](https://linkedin.com/in/florent-cochet-3b3938138) · [GitHub](https://github.com/FloMind)
 
