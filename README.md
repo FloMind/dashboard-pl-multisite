@@ -17,7 +17,7 @@ Les directions régionales de réseaux de distribution (B2B, matériaux, négoce
 - le calcul du point mort et de la marge de sécurité par site
 - le suivi du BFR et de la trésorerie à l'échelle du réseau
 
-Ce dashboard transforme un export comptable standard (compte de résultat par centre de coûts, format Sage/Cegid) en outil de pilotage interactif, consultable par tout profil — du directeur régional au contrôleur de gestion.
+Ce dashboard transforme un export comptable standard (compte de résultat par centre de coûts, format Sage/Cegid) en outil de pilotage interactif, consultable par tout profil du directeur régional au contrôleur de gestion.
 
 ---
 
