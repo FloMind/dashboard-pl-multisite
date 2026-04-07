@@ -30,13 +30,13 @@ def render(pl_f, df_f, bal_f, mon_f):
 
     sh(f"Détail — {site_det}" + (f" · {cat_det}" if cat_det != "Toutes" else ""))
     df_show = df_det[["Compte","libelle_compte","categorie","cumul_r25","cumul_b25","cumul_r24"]].copy()
-    df_show.columns = ["Compte","Libellé","Catégorie","Cumul R25","Cumul B25","Cumul N-1"]
-    for c in ["Cumul R25","Cumul B25","Cumul N-1"]:
+    df_show.columns = ["Compte","Libellé","Catégorie","Cumul R25","Cumul B24","Cumul N-1"]
+    for c in ["Cumul R25","Cumul B24","Cumul N-1"]:
         df_show[c] = df_show[c].apply(fmt_k)
 
 
     st.dataframe(
-        df_show.set_index("Compte").style.applymap(color_val, subset=["Cumul R25","Cumul B25","Cumul N-1"]),
+        df_show.set_index("Compte").style.map(color_val, subset=["Cumul R25","Cumul B24","Cumul N-1"]),
         use_container_width=True, height=400)
 
     fig_det = px.bar(
@@ -48,7 +48,7 @@ def render(pl_f, df_f, bal_f, mon_f):
             "Loyers & entretien":"#1a5276","Services extérieurs":"#5dade2",
             "Impôts & taxes":"#7f8c8d","Autres charges":"#aab7b8",
         },
-        labels={"cumul_r25":"Cumul R25 (€)","libelle_compte":""},
+        labels={"cumul_r25":"Cumul R24 (€)","libelle_compte":""},
     )
     fig_det.update_traces(marker_line_width=0)
     fig_det.add_vline(x=0, line_color="#bcd4e8", line_width=1.5)

@@ -115,7 +115,7 @@ def render(pl_f, df_f, bal_f, mon_f):
 
     
             st.dataframe(
-                tbl_m.set_index("Mois").style.applymap(
+                tbl_m.set_index("Mois").style.map(
                     color_val, subset=["Écart","Écart %"]),
                 use_container_width=True, height=460)
 

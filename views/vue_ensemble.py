@@ -38,7 +38,7 @@ def render(pl_f, df_f, bal_f, mon_f):
 
 
     c1,c2,c3,c4,c5 = st.columns(5, gap="small")
-    kpi(c1, "CA Réalisé 2025",
+    kpi(c1, "CA Réalisé 2024",
              fmt_m(ca_tot), "N-1", fmt_m(ca_n1),
              evol=evol_ca, rag=C_BLUE)
     kpi(c2, "MB Commerciale",
@@ -181,7 +181,7 @@ def render(pl_f, df_f, bal_f, mon_f):
         tbl_dg["DPO"]   = tbl_dg["DPO"].apply(lambda v: f"{v:.0f}j")
 
 
-    styled = tbl_dg.set_index("Site").style.applymap(
+    styled = tbl_dg.set_index("Site").style.map(
         color_val, subset=["Rés. R25","Écart B","Écart N-1","Tréso"] if has_bal
                 else ["Rés. R25","Écart B","Écart N-1"])
     st.dataframe(styled, use_container_width=True,
@@ -193,7 +193,7 @@ def render(pl_f, df_f, bal_f, mon_f):
     st.download_button(
         label="⬇ Exporter le tableau DG",
         data=buf.getvalue(),
-        file_name="synthese_dg_r2025.xlsx",
+        file_name="synthese_dg_r2024.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     )
 
@@ -212,7 +212,7 @@ def render(pl_f, df_f, bal_f, mon_f):
             marker_color=bar_colors(pl_s["res_r25"]), marker_line_width=0,
             text=[fmt_k(v) for v in pl_s["res_r25"]],
             textposition="outside", textfont=dict(size=10, color=C_NAVY),
-            name="Résultat R25",
+            name="Résultat R24",
         )
         fig.add_bar(
             x=pl_s["res_b25"]/1000, y=pl_s["site"], orientation="h",
@@ -228,7 +228,7 @@ def render(pl_f, df_f, bal_f, mon_f):
         sh("Classement sites")
         st.markdown(
             '<p style="font-size:10px;color:#7f8c8d;text-align:right;margin:0 0 6px;">'
-            'Résultat R25 · Écart Budget</p>', unsafe_allow_html=True)
+            'Résultat R24 · Écart Budget</p>', unsafe_allow_html=True)
 
         for _, row in pl_f.sort_values("res_r25", ascending=False).iterrows():
             c = C_POS if row["res_r25"] >= 0 else C_NEG

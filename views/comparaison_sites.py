@@ -75,7 +75,7 @@ def render(pl_f, df_f, bal_f, mon_f):
 
 
     st.dataframe(
-        tbl.set_index("Site").style.applymap(
+        tbl.set_index("Site").style.map(
             color_val, subset=["Rés. R25","Rés. B25","Rés. N-1","Écart B","Écart N-1","MB Ciale","MB Totale"]),
         use_container_width=True, height=min(700, len(tbl)*36+42))
 

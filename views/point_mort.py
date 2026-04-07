@@ -162,7 +162,7 @@ def render(pl_f, df_f, bal_f, mon_f):
         df_scen = pd.DataFrame(scenarios)
 
         # Coloration de la colonne Résultat
-        styled_scen = df_scen.set_index("Variation CA").style.applymap(
+        styled_scen = df_scen.set_index("Variation CA").style.map(
             color_val, subset=["Résultat", "∆ Résultat"]
         ).apply(
             lambda row: [
@@ -243,7 +243,7 @@ def render(pl_f, df_f, bal_f, mon_f):
             lambda v: f"{v:.1f}%")
 
     st.dataframe(
-        tbl_pm.set_index("Site").style.applymap(
+        tbl_pm.set_index("Site").style.map(
             color_val, subset=["Marge sécu.", "Résultat"]),
         use_container_width=True,
         height=min(700, len(tbl_pm)*36+44),
