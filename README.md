@@ -32,7 +32,6 @@ Ce dashboard transforme un export comptable standard (compte de résultat par ce
 ### Vue d'ensemble
 - 5 KPIs P&L réseau en M€ avec évolution vs N-1 (CA, MB commerciale, Résultat, Écart budget, Santé réseau)
 - 6 KPIs BFR & Trésorerie réseau (Tréso, Stock, Créances, Dettes, BFR, Sites à risque)
-- Cascade P&L réseau consolidée (waterfall 13 postes)
 - Graphiques Tréso/BFR par site + délais DSO/DSI/DPO
 - Tableau réseau consolidé avec export Excel
 
@@ -42,14 +41,14 @@ Ce dashboard transforme un export comptable standard (compte de résultat par ce
 - Vue par site top 10 : multi-courbes + heatmap mensuelle (sites × mois)
 
 ### Comparaison sites
-- 10 indicateurs sélectionnables dont seuil de rentabilité et indice de sécurité
+- 7 indicateurs sélectionnables (Résultat, CA, MB commerciale, MB totale, Taux MB, Écart budget, Écart N-1)
 - Barplot groupé R2025 / Budget / N-1
 - Tableau P&L complet avec export Excel
 
 ### Drill-down charges
 - Cascade P&L site (waterfall 13 postes) : du CA au résultat net
 - Séparation explicite MB commerciale / ajustements siège & stock
-- Répartition des charges (donut) + comparaison R24/Budget/N-1
+- Répartition des charges (donut) + comparaison R2025/Budget/N-1
 - Top 15 postes de charges par site
 
 ### Point mort *(onglet dédié)*
@@ -79,7 +78,7 @@ CA net (comptes 70x)
 - Achats marchandises (607x, 608x, 602x, 604x, 606x)
 = MARGE BRUTE COMMERCIALE   ← performance commerciale pure, comparable entre sites
 
-+ RFA (609720)         ← remise de fin d'année allouée par le siège
++ RFA (609720)               ← remise de fin d'année allouée par le siège
 + Variation de stock (603700)← ajustement inventaire
 = MARGE BRUTE TOTALE
 
@@ -129,12 +128,12 @@ venv\Scripts\activate         # Windows
 pip install -r requirements.txt
 
 # 4. Générer les données de démonstration
-python generate_data.py
-python generate_balance.py
-python generate_monthly.py
+python generators/generate_data.py
+python generators/generate_balance.py
+python generators/generate_monthly.py
 
 # 5. Lancer
-streamlit run dashboard_pl.py
+streamlit run app.py
 ```
 
 → Le navigateur s'ouvre sur `http://localhost:8501`
@@ -161,10 +160,10 @@ Le fichier Excel d'entrée doit contenir une feuille avec les colonnes suivantes
 
 > **Convention de signe** : produits (70x) positifs, charges (6x) négatives — conforme à l'export Sage standard.
 
-Modifier ensuite la variable `FILE` en tête de `dashboard_pl.py` :
+Modifier ensuite les variables de fichiers dans `core/constants.py` :
 
 ```python
-FILE     = "votre_fichier_cr.xlsx"
+FILE_PL  = "votre_fichier_cr.xlsx"
 FILE_BAL = "votre_fichier_bilan.xlsx"    # optionnel
 FILE_MON = "votre_fichier_mensuel.xlsx"  # optionnel
 ```
@@ -173,7 +172,7 @@ FILE_MON = "votre_fichier_mensuel.xlsx"  # optionnel
 
 ## Données de démonstration
 
-Les données incluses dans `data/` sont **100% fictives**, générées par les scripts `generate_*.py`. Elles reproduisent la structure d'un réseau de distribution de 30 sites (~56 M€ CA) avec :
+Les données incluses dans `data/` sont **100% fictives**, générées par les scripts dans `generators/`. Elles reproduisent la structure d'un réseau de distribution de 30 sites (~56 M€ CA) avec :
 
 - Taux de marge hétérogènes (distribution B2B : 28–52%)
 - Écarts budgétaires positifs et négatifs
@@ -188,17 +187,34 @@ Les données incluses dans `data/` sont **100% fictives**, générées par les s
 
 ```
 dashboard-pl-multisite/
-├── dashboard_pl.py          # App Streamlit principale (1 689 lignes)
-├── generate_data.py         # Générateur CR fictif (30 sites, 56.6 M€)
-├── generate_balance.py      # Générateur bilan fictif (DSO, DSI, DPO, BFR)
-├── generate_monthly.py      # Générateur séries mensuelles (12 mois × 30 sites)
+├── app.py                      # Point d'entrée Streamlit
+├── core/
+│   ├── constants.py            # Palette, seuils, catégories de comptes
+│   ├── calculations.py         # SIG, build_pl, point mort
+│   └── loader.py               # Chargement Excel + cache session_state
+├── components/
+│   ├── formatters.py           # fmt_k, fmt_m, fmt_k_ecart, color_val
+│   ├── charts.py               # chart_layout, bar_colors
+│   └── kpi_cards.py            # kpi(), sh()
+├── views/                      # 7 onglets, 1 fichier chacun
+│   ├── vue_ensemble.py
+│   ├── evolution_mensuelle.py
+│   ├── comparaison_sites.py
+│   ├── drill_down.py
+│   ├── point_mort.py
+│   ├── treso_bfr.py
+│   └── detail_comptable.py
+├── generators/                 # Scripts génération données fictives (non déployés)
+│   ├── generate_data.py
+│   ├── generate_balance.py
+│   └── generate_monthly.py
+├── data/
+│   ├── sample_data.xlsx        # CR fictif (30 sites × 28 comptes)
+│   ├── sample_balance.xlsx     # Bilan fictif (DSO, DSI, DPO, BFR)
+│   └── sample_monthly.xlsx     # Séries mensuelles (12 mois × 30 sites)
 ├── requirements.txt
 ├── .gitignore
-├── README.md
-└── data/
-    ├── sample_data.xlsx     # CR fictif
-    ├── sample_balance.xlsx  # Bilan fictif
-    └── sample_monthly.xlsx  # Séries mensuelles fictives
+└── README.md
 ```
 
 ---
@@ -226,4 +242,4 @@ Certification Data Scientist - Mines Paris PSL (2025)
 
 ## Licence
 
-MIT — libre d'utilisation, modification et distribution.
+MIT - libre d'utilisation, modification et distribution.

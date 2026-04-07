@@ -1,18 +1,25 @@
-# ── DONNÉES RÉELLES — NE JAMAIS POUSSER ──────────────────────────────────────
+# —— DONNÉES RÉELLES — NE JAMAIS POUSSER ————————————————————————————————————
 dashboard_multisite_nettoye.xlsx
 comptes_anonymises.xlsx
 anonymize_comptes.py
 *_nettoye.xlsx
 *_reel.xlsx
 *_brut.xlsx
-
+dashboard_pl.py
+Dashboard token.txt
+check.py
+ 
 # Exclure tous les xlsx sauf les données de démo
 *.xlsx
 !data/sample_data.xlsx
 !data/sample_balance.xlsx
 !data/sample_monthly.xlsx
-
-# ── ENVIRONNEMENT PYTHON ──────────────────────────────────────────────────────
+ 
+# —— GENERATORS ——————————————————————————————————————————————————————————————
+# Scripts de génération — révèlent la structure interne des données
+generators/
+ 
+# —— ENVIRONNEMENT PYTHON ————————————————————————————————————————————————————
 venv/
 .venv/
 env/
@@ -22,21 +29,21 @@ __pycache__/
 .Python
 pip-log.txt
 pip-delete-this-directory.txt
-
-# ── JUPYTER ───────────────────────────────────────────────────────────────────
+ 
+# —— JUPYTER —————————————————————————————————————————————————————————————————
 .ipynb_checkpoints/
 *.ipynb
-
-# ── STREAMLIT ─────────────────────────────────────────────────────────────────
+ 
+# —— STREAMLIT ————————————————————————————————————————————————————————————————
 .streamlit/secrets.toml
-
-# ── SYSTÈME ───────────────────────────────────────────────────────────────────
+ 
+# —— SYSTÈME ——————————————————————————————————————————————————————————————————
 .DS_Store
 Thumbs.db
 desktop.ini
 *.log
-
-# ── IDE ───────────────────────────────────────────────────────────────────────
+ 
+# —— IDE ——————————————————————————————————————————————————————————————————————
 .vscode/
 .idea/
 *.swp
