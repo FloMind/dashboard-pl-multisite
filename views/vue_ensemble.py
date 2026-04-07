@@ -181,9 +181,14 @@ def render(pl_f, df_f, bal_f, mon_f):
         tbl_dg["DPO"]   = tbl_dg["DPO"].apply(lambda v: f"{v:.0f}j")
 
 
-    styled = tbl_dg.set_index("Site").style.map(
-        color_val, subset=["Rés. R25","Écart B","Écart N-1","Tréso"] if has_bal
-                else ["Rés. R25","Écart B","Écart N-1"])
+    subset = ["Rés. R25","Écart B","Écart N-1","Tréso"] if has_bal \
+              else ["Rés. R25","Écart B","Écart N-1"]
+    try:
+        # Pandas 2.1+
+        styled = tbl_dg.set_index("Site").style.map(color_val, subset=subset)
+    except AttributeError:
+        # Pandas < 2.1
+        styled = tbl_dg.set_index("Site").style.applymap(color_val, subset=subset)
     st.dataframe(styled, use_container_width=True,
                  height=min(800, len(tbl_dg)*36+44))
 
