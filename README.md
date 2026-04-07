@@ -223,7 +223,7 @@ dashboard-pl-multisite/
 
 | Composant | Version min | Rôle |
 |---|---|---|
-| [Streamlit](https://streamlit.io) | 1.32 | Interface web interactive |
+| [Streamlit](https://streamlit.io) | 1.40 | Interface web interactive |
 | [Pandas](https://pandas.pydata.org) | 2.0 | Chargement, agrégation, calculs |
 | [Plotly](https://plotly.com/python/) | 5.18 | Graphiques interactifs |
 | [openpyxl](https://openpyxl.readthedocs.io) | 3.1 | Lecture/écriture Excel |
