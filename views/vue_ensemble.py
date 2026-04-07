@@ -1,4 +1,4 @@
-"""views/vue_ensemble.py — extrait fidèle du dashboard_pl.py original"""
+"""views/vue_ensemble.py - extrait fidèle du dashboard_pl.py original"""
 import io
 import streamlit as st
 import pandas as pd
@@ -38,7 +38,7 @@ def render(pl_f, df_f, bal_f, mon_f):
 
 
     c1,c2,c3,c4,c5 = st.columns(5, gap="small")
-    kpi(c1, "CA Réalisé 2024",
+    kpi(c1, "CA Réalisé 2025",
              fmt_m(ca_tot), "N-1", fmt_m(ca_n1),
              evol=evol_ca, rag=C_BLUE)
     kpi(c2, "MB Commerciale",
@@ -188,7 +188,7 @@ def render(pl_f, df_f, bal_f, mon_f):
         styled = tbl_dg.set_index("Site").style.map(color_val, subset=subset)
     except AttributeError:
         # Pandas < 2.1
-        styled = tbl_dg.set_index("Site").style.applymap(color_val, subset=subset)
+        styled = tbl_dg.set_index("Site").style.map(color_val, subset=subset)
     st.dataframe(styled, use_container_width=True,
                  height=min(800, len(tbl_dg)*36+44))
 
@@ -217,7 +217,7 @@ def render(pl_f, df_f, bal_f, mon_f):
             marker_color=bar_colors(pl_s["res_r25"]), marker_line_width=0,
             text=[fmt_k(v) for v in pl_s["res_r25"]],
             textposition="outside", textfont=dict(size=10, color=C_NAVY),
-            name="Résultat R24",
+            name="Résultat R25",
         )
         fig.add_bar(
             x=pl_s["res_b25"]/1000, y=pl_s["site"], orientation="h",
