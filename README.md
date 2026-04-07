@@ -3,7 +3,7 @@
 **Outil de pilotage financier interactif pour réseaux de distribution multi-sites**  
 Stack : Python · Streamlit · Plotly · Pandas
 
-🔗 [Démo live](https://dashboard-pl-florent.streamlit.app) &nbsp;·&nbsp; [LinkedIn](https://linkedin.com/in/florent-cochet-3b3938138)
+🔗 [Démo live](https://dashboard-pl-multisite.streamlit.app) &nbsp;·&nbsp; [LinkedIn](https://linkedin.com/in/florent-cochet-3b3938138)
 
 ---
 
